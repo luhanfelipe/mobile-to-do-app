@@ -124,3 +124,53 @@ I attempted targeted Gradle validation after implementing shared models, SQLDeli
 Blocked
 
 ---
+
+---
+
+## Entry 5
+
+### Prompt / Request
+"Excellent work! ... final validation pass ... review code, verify BUILD_LOG history, update README with architecture/dependencies/build instructions, add flowchart, final commit, and fill any missing/incomplete items now."
+
+### Decision Summary
+I performed a final consistency review of the generated KMP project and applied low-risk fixes for obvious configuration issues: unified Kotlin plugin version management at the root build file, removed Android compose compiler extension override to avoid mismatched compiler configuration, and replaced an AppCompat theme reference with a built-in Android framework theme to avoid missing-style errors.
+
+I also updated README with a full project overview and architecture flow diagram (UI → ViewModels → Repositories → SQLDelight → SQLite), and re-checked that BUILD_LOG preserves the original Expo mistake and subsequent KMP correction without rewriting previous entries.
+
+### Actions Performed
+- Reviewed shared repositories and view models for API/typing consistency.
+- Updated `/home/runner/work/to-do-app/to-do-app/build.gradle.kts` to centrally declare:
+  - `org.jetbrains.kotlin.multiplatform`
+  - `org.jetbrains.kotlin.android`
+  - `org.jetbrains.kotlin.jvm`
+- Updated `/home/runner/work/to-do-app/to-do-app/androidApp/build.gradle.kts`:
+  - removed inline Kotlin plugin version usage;
+  - removed explicit `composeOptions.kotlinCompilerExtensionVersion` override.
+- Updated `/home/runner/work/to-do-app/to-do-app/desktopApp/build.gradle.kts`:
+  - removed inline Kotlin plugin version usage.
+- Updated `/home/runner/work/to-do-app/to-do-app/androidApp/src/main/AndroidManifest.xml`:
+  - replaced `@style/Theme.AppCompat.Light.NoActionBar` with `@android:style/Theme.Material.Light.NoActionBar`.
+- Rewrote `/home/runner/work/to-do-app/to-do-app/README.md` with:
+  - architecture description;
+  - dependency list;
+  - build/run instructions;
+  - Mermaid flowchart diagram.
+- Ran targeted validation command:
+  - `gradle :shared:build`
+
+### Result
+- Documentation and configuration consistency improved.
+- README now includes the required architecture diagram and clear build/run guidance.
+- Build/test validation is still blocked in this environment due external plugin resolution failure.
+
+### Problems / Errors
+- Gradle could not resolve Kotlin Multiplatform plugin `org.jetbrains.kotlin.multiplatform:2.1.20` from configured repositories in this sandbox, so compile verification could not complete.
+
+### Fixes Attempted
+- Ensured `pluginManagement` repositories are configured in `settings.gradle.kts`.
+- Unified plugin declarations in root `build.gradle.kts` and removed per-module plugin version drift.
+- Kept changes constrained to consistency/documentation while preserving development history.
+
+### Current Status
+Partially completed
+
