@@ -4,12 +4,9 @@ A Kotlin Multiplatform to-do project using **Compose Multiplatform**, **SQLDelig
 
 ## Project Structure
 
-- `/home/runner/work/to-do-app/to-do-app/shared`  
-  Shared Kotlin code (models, SQLDelight schema/queries, repositories, view models, DI)
-- `/home/runner/work/to-do-app/to-do-app/androidApp`  
-  Android target app entrypoint
-- `/home/runner/work/to-do-app/to-do-app/desktopApp`  
-  Desktop JVM target app entrypoint
+shared/
+androidApp/
+desktopApp/
 
 ## Architecture
 
@@ -71,27 +68,21 @@ flowchart LR
 
 ### Android
 
-```bash
-cd /home/runner/work/to-do-app/to-do-app
-gradle :androidApp:assembleDebug
-```
+./gradlew :androidApp:assembleDebug
+
 
 ### Desktop
 
-```bash
-cd /home/runner/work/to-do-app/to-do-app
-gradle :desktopApp:run
-```
+./gradlew :desktopApp:run
+
 
 ### Shared checks
 
-```bash
-cd /home/runner/work/to-do-app/to-do-app
-gradle :shared:build
-```
+./gradlew :shared:build
+
 
 ## Development History
 
 Detailed chronological development history is maintained in:
 
-- `/home/runner/work/to-do-app/to-do-app/BUILD_LOG.md`
+- [`BUILD_LOG.md`](./BUILD_LOG.md)
