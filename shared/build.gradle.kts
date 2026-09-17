@@ -14,6 +14,7 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.compose.runtime:runtime:1.8.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
                 implementation("io.insert-koin:koin-core:3.5.6")
                 implementation("app.cash.sqldelight:runtime:2.0.2")
                 implementation("app.cash.sqldelight:coroutines-extensions:2.0.2")

@@ -92,3 +92,35 @@ I kept the architecture strictly MVVM + Repository in shared common code and use
 
 ### Current Status
 Partially completed
+
+---
+
+
+## Entry 4
+
+### Prompt / Request
+"Run targeted build/tests for shared module and fix issues."
+
+### Decision Summary
+I attempted targeted Gradle validation after implementing shared models, SQLDelight queries, repositories, and view models. I also made preventive fixes for likely compile issues (`kotlinx-datetime` dependency and Android manifest icon reference).
+
+### Actions Performed
+- Ran `gradle wrapper` to prepare standard build execution.
+- Updated `shared/build.gradle.kts` to include `kotlinx-datetime`.
+- Updated `.gitignore` with Gradle artifacts (`.gradle/`, `build/`, `**/build/`).
+- Removed Android launcher icon manifest reference that had no matching resource in current scaffold.
+
+### Result
+- Validation could not complete because Gradle plugin resolution failed in the current environment (network-restricted plugin download).
+
+### Problems / Errors
+- `org.jetbrains.kotlin.multiplatform` plugin could not be resolved from configured repositories during `gradle wrapper` execution.
+
+### Fixes Attempted
+- Kept plugin repositories configured in `settings.gradle.kts` (Google, Gradle Plugin Portal, Maven Central, JetBrains Compose repo).
+- Applied local code fixes that were independent of external dependency resolution.
+
+### Current Status
+Blocked
+
+---
