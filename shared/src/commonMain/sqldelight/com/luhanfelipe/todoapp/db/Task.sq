@@ -1,0 +1,45 @@
+CREATE TABLE Task (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT,
+    completed INTEGER AS Boolean NOT NULL DEFAULT 0,
+    dueDateTime TEXT,
+    createdAt TEXT NOT NULL,
+    categoryId INTEGER REFERENCES Category(id) ON DELETE SET NULL
+);
+
+selectAllTasks:
+SELECT * FROM Task
+ORDER BY createdAt DESC;
+
+selectTaskById:
+SELECT * FROM Task
+WHERE id = ?;
+
+selectTasksByStatus:
+SELECT * FROM Task
+WHERE completed = ?
+ORDER BY createdAt DESC;
+
+selectTasksByCategory:
+SELECT * FROM Task
+WHERE categoryId = ?
+ORDER BY createdAt DESC;
+
+insertTask:
+INSERT INTO Task(title, description, completed, dueDateTime, createdAt, categoryId)
+VALUES (?, ?, ?, ?, ?, ?);
+
+updateTask:
+UPDATE Task
+SET title = ?,
+    description = ?,
+    completed = ?,
+    dueDateTime = ?,
+    createdAt = ?,
+    categoryId = ?
+WHERE id = ?;
+
+deleteTask:
+DELETE FROM Task
+WHERE id = ?;
