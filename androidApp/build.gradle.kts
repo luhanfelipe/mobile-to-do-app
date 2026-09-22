@@ -26,4 +26,5 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.10.1")
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("org.jetbrains.compose.material3:material3:1.8.2")
+    implementation("app.cash.sqldelight:android-driver:2.0.2")
 }
